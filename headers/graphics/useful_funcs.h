@@ -74,6 +74,24 @@ SFML_SIMPLE_WRAPPER_API sf_Vector2f ssw_keep_frect_on_area(sf_FloatRect rect, sf
 SFML_SIMPLE_WRAPPER_API void ssw_flip_sprite(sf_Sprite sprite, int flip_x, int flip_y, int global_coords);
 
 /**
+ * Rotates the sprite without changing the position of it's center.
+ * Useful when you don't want to set 'origin'.
+ * The angle must be in degrees.
+ * If 'global_coords' is not equal to 0, use 'getGlobalBounds()' to define
+ *the coordinates, otherwise 'getLocalBounds()'.
+ */
+SFML_SIMPLE_WRAPPER_API void ssw_rotate_sprite(sf_Sprite sprite, float degrees, int global_coords);
+
+/**
+ * Sets the rotation angle of the sprite without changing the position of it's center.
+ * Useful when you don't want to set 'origin'.
+ * The angle must be in degrees.
+ * If 'global_coords' is not equal to 0, use 'getGlobalBounds()' to define
+ *the coordinates, otherwise 'getLocalBounds()'.
+ */
+SFML_SIMPLE_WRAPPER_API void ssw_set_rotation_sprite(sf_Sprite sprite, float degrees, int global_coords);
+
+/**
  * Returns the coefficients to get from current sizes new.
  * If 'current_width' or 'current_height' is 0, returns the default coefficients(1., 1.).
  * If 'keep_w' is not 0, it will preserve the width-to-height ratio.

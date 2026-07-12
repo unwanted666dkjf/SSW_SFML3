@@ -175,6 +175,42 @@ void ssw_flip_sprite(sf_Sprite sprite, int flip_x, int flip_y, int global_coords
 	s->move(sf::Vector2f(dx, dy));
 }
 
+void ssw_rotate_sprite(sf_Sprite sprite, float degrees, int global_coords) {
+	sf::Sprite* s = static_cast<sf::Sprite*>(sprite);
+	sf::FloatRect old_rect = (global_coords) ? s->getGlobalBounds() : s->getLocalBounds();
+	sf::Vector2f old_center(
+		old_rect.position.x + old_rect.size.x * .5f,
+		old_rect.position.y + old_rect.size.y * .5f
+	);
+	s->rotate(sf::degrees(degrees));
+	sf::FloatRect new_rect = (global_coords) ? s->getGlobalBounds() : s->getLocalBounds();
+	sf::Vector2f new_center(
+		new_rect.position.x + new_rect.size.x * .5f,
+		new_rect.position.y + new_rect.size.y * .5f
+	);
+	float dx = old_center.x - new_center.x;
+	float dy = old_center.y - new_center.y;
+	s->move(sf::Vector2f(dx, dy));
+}
+
+void ssw_set_rotation_sprite(sf_Sprite sprite, float degrees, int global_coords) {
+	sf::Sprite* s = static_cast<sf::Sprite*>(sprite);
+	sf::FloatRect old_rect = (global_coords) ? s->getGlobalBounds() : s->getLocalBounds();
+	sf::Vector2f old_center(
+		old_rect.position.x + old_rect.size.x * .5f,
+		old_rect.position.y + old_rect.size.y * .5f
+	);
+	s->setRotation(sf::degrees(degrees));
+	sf::FloatRect new_rect = (global_coords) ? s->getGlobalBounds() : s->getLocalBounds();
+	sf::Vector2f new_center(
+		new_rect.position.x + new_rect.size.x * .5f,
+		new_rect.position.y + new_rect.size.y * .5f
+	);
+	float dx = old_center.x - new_center.x;
+	float dy = old_center.y - new_center.y;
+	s->move(sf::Vector2f(dx, dy));
+}
+
 sf_Vector2f ssw_get_new_scale(
 	float new_width, 	 float new_height,
 	float current_width, float current_height,
