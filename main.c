@@ -2,6 +2,8 @@
 
 #include <stdlib.h>
 
+#include <locale.h>
+
 #include "headers/system/sf_clock.h"
 
 #include "headers/system/sf_time.h"
@@ -66,6 +68,22 @@
 
 
 int main(void) {
+	std_Path p = std_Path_from_wchar_str(L"./клоун.gif");
+	sf_String s = std_Path_sf_str(p);
+	for (int i = 0; i < sf_String_size(s); i++) {
+		unsigned int code = sf_String_get(s, i);
+		wchar_t wc = (wchar_t)code;
+		wprintf(L"%lc", wc);
+	}
+	wprintf(L"\n");
+	wprintf(L"exists: %d\n", std_Path_exists(p));
+	s = sf_String_del(s);
+	p = std_Path_del(p);
+	return 0;
+}
+
+
+int example(void) {
 	std_Path wnd_icon_path = std_Path_from_char_str("./virus.png");
 	sf_Image wnd_icon = sf_Image_default();
 	if (!sf_Image_load(wnd_icon, wnd_icon_path)) {
