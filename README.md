@@ -4,7 +4,9 @@
 ## About
 
 SSW_SFML3(simple sfml3 wrapper) - thin, simple and fast binding of SFML3 for C.
-This is not official binding, project is just an alternative of CSFML to create ctypes/ffi/<name it> bindings for other languages (Python, Ruby, etc...).
+This is not official binding, project is just an alternative of CSFML to create ctypes/ffi/<name it> bindings for other languages (Python, Ruby, etc...).<br>
+If you need something specific to C, take a look at my other binding:
+[MoonCSFML](https://github.com/unwanted666dkjf/MoonCSFML).
 
 
 ## Status
